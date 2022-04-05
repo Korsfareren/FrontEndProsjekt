@@ -9,16 +9,17 @@ import androidx.appcompat.widget.AppCompatImageButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 
-class EventAdapter(private val dataSet: List<EventData>
+class EventAdapter(
+    private val dataSet: List<EventData>, val function: (EventData) -> Unit
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     inner class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val constraintLayout: ConstraintLayout = view.findViewById(R.id.cell_view_constraint_layout)
+        var constraintLayout: ConstraintLayout = view.findViewById(R.id.cell_view_constraint_layout)
         var imageEvent: ImageView = view.findViewById(R.id.image_event)
-        val dateEvent: TextView = view.findViewById(R.id.date_event)
-        val headerEvent: TextView = view.findViewById(R.id.header_event)
-        val artistNameEvent: TextView = view.findViewById(R.id.artist_name_event)
-        val favoriteEventBtn: AppCompatImageButton = view.findViewById(R.id.favourite_event_btn)
+        var dateEvent: TextView = view.findViewById(R.id.date_event)
+        var headerEvent: TextView = view.findViewById(R.id.header_event)
+        var artistNameEvent: TextView = view.findViewById(R.id.artist_name_event)
+        var favoriteEventBtn: AppCompatImageButton = view.findViewById(R.id.favourite_event_btn)
     }
 
     // Create new views (invoked by the layout manager)
@@ -39,18 +40,18 @@ class EventAdapter(private val dataSet: List<EventData>
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
 
+        val eventObject = dataSet[position]
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        val image = dataSet[position].image
-        val date = dataSet[position].date
-        val header = dataSet[position].header
-        val artist = dataSet[position].artist
-        val favourite = dataSet[position].favourite
 
-        holder.imageEvent = image
-        holder.dateEvent.text = date.toString()
-        holder.headerEvent.text = header
-        holder.artistNameEvent.text = artist
+        holder.imageEvent.setImageResource(eventObject.image)
+        holder.dateEvent.text = eventObject.date.toString()
+        holder.headerEvent.text = eventObject.header
+        holder.artistNameEvent.text = eventObject.artist
+
+        holder.constraintLayout.setOnClickListener {
+            function(eventObject)
+        }
 
     }
 

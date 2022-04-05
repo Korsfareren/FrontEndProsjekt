@@ -17,8 +17,7 @@ class MainActivity : AppCompatActivity() {
     fun login() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add<ChooseCityFragment>(R.id.fragment_containter)
-
+            add<EventFragment>(R.id.fragment_containter)
         }
     }
 }
