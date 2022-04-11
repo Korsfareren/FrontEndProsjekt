@@ -7,15 +7,23 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cell_view_constraint_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        android:background="@drawable/rounded_bg"
+        android:padding="12dp">
 
         <ImageView
             android:id="@+id/image_event"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:foreground="@drawable/rounded_image_bg"
+            android:background="@drawable/rounded_bg"
+            android:maxWidth="100dp"
+            android:maxHeight="100dp"
             android:src="@drawable/ic_oivind"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/date_event"
@@ -24,6 +32,8 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:text="04.04.2022"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/image_event"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,6 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:text="AA for java-utviklere"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/image_event"
             app:layout_constraintTop_toBottomOf="@+id/date_event" />
 
@@ -43,8 +55,42 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:text="Øivind Jordfald"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/image_event"
             app:layout_constraintTop_toBottomOf="@+id/header_event" />
+
+        <TextView
+            android:id="@+id/city_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="Oslo"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/image_event"
+            app:layout_constraintTop_toBottomOf="@+id/artist_name_event" />
+
+        <TextView
+            android:id="@+id/participants_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="20"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/city_event" />
+
+        <ImageView
+            android:id="@+id/participants_event_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/ic_peoples_participants"
+            app:layout_constraintEnd_toStartOf="@+id/participants_event"
+            app:layout_constraintTop_toTopOf="@id/city_event"
+            app:tint="@color/black" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/favourite_event_btn"
